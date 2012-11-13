@@ -1,0 +1,37 @@
+{
+  "endpoints": [
+    <% @objects.each_with_index do |resource, ri| %>
+      {
+        "name":"<%= resource.tag(:topic).text %>",
+        "methods": [
+
+          <% # Do not include any methods that are inherited or included from other mixins %>
+          <% actions = select_actions(resource.meths(:inherited => false, :included => false)) %>
+          <% actions.each_with_index do |meth, mi| %>
+            
+            {
+              "MethodName":"<%= (meth.has_tag?(:method_name)) ? meth.tag(:method_name).text : meth.name %>",
+              "Synopsis":"<%= meth.docstring %>",
+              "HTTPMethod":"<%= meth.tag(:action).text %>",
+              "URI":"<%= meth.tag(:url).text %>",
+              "RequiresOAth":"<%= options[:requires_oath] || 'N' %>",
+              "parameters":[
+                <% params = meth.tags(:required) + meth.tags(:optional) %>
+                <% (params).each_with_index do |param, pi| %>
+                  {
+                    "Name":"<%= param.name %>",
+                    "Required":"<%= (param.tag_name == 'required') ? "Y" : "N" %>",
+                    //"Default":"",
+                    "Type":"<%= param.types.first %>",
+                    "Description":"<%= param.text %>"
+                  }<%= "," if pi < (params.count - 1) %>
+                <% end %>
+              ]
+            }<%= "," if mi < (actions.count - 1) %>
+
+          <% end # actions loop %>
+        ]
+      }<%= "," if ri < (@objects.count - 1) %>
+    <% end # resource loop %>
+  ]   
+}
