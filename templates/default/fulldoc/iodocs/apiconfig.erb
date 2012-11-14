@@ -11,7 +11,7 @@
             
             {
               "MethodName":"<%= (meth.has_tag?(:method_name)) ? meth.tag(:method_name).text : meth.name %>",
-              "Synopsis":"<%= meth.docstring %>",
+              "Synopsis":"<%= meth.docstring.gsub("\n","") %>",
               "HTTPMethod":"<%= meth.tag(:action).text %>",
               "URI":"<%= meth.tag(:url).text %>",
               "RequiresOAth":"<%= options[:requires_oath] || 'N' %>",
@@ -29,9 +29,9 @@
               ]
             }<%= "," if mi < (actions.count - 1) %>
 
-          <% end # actions loop %>
+          <% end %>
         ]
       }<%= "," if ri < (@objects.count - 1) %>
-    <% end # resource loop %>
+    <% end %>
   ]   
 }
