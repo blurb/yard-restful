@@ -5,4 +5,4 @@ require 'yard-restful/rest_filters'
 require 'yard-restful/html_blocks_helper'
 
 YARD::Templates::Template.extra_includes << RestFilters
-YARD::Templates::Template.extra_includes << ->(opts) { HtmlBlocksHelper if opts.format == :html }
+YARD::Templates::Template.extra_includes << lambda { |opts| HtmlBlocksHelper if opts.format == :html }

@@ -1,6 +1,6 @@
 <% if object.restful? && !object.resource? %>
   <h3 class="object_properties_title">Object properties</h3>
-  <%= yieldall(item: :property, title: '') %>
+  <%= yieldall(:item => :property, :title => '') %>
   <% if object.tags(:example).size > 0 %>
     <h3>Examples</h3>
     <% object.tags(:example).each do |tag| %>

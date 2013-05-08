@@ -13,8 +13,8 @@
         </div>
       <% end %>
 
-      <%= yieldall(object: meth, item: :required, title: 'Required Parameters') %>
-      <%= yieldall(object: meth, item: :optional, title: 'Optional Parameters') %>
+      <%= yieldall(:object => meth, :item => :required, :title => 'Required Parameters') %>
+      <%= yieldall(:object => meth, :item => :optional, :title => 'Optional Parameters') %>
       <% if meth.tags(:response).size > 0 %>
         <div class="parameters <%=rotate(:odd_even)%>">
           <h4>Response Object</h4>
@@ -26,7 +26,7 @@
           </ul>
         </div>
       <% else %>
-        <%= yieldall(object: meth, item: :response_field, title: 'Response Fields') %>
+        <%= yieldall(:object => meth, :item => :response_field, :title => 'Response Fields') %>
       <% end %>
 
 			<% if meth.tags(:example_request).size > 0 %>
