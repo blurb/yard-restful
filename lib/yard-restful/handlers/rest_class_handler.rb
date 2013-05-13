@@ -28,3 +28,13 @@ class YARD::Handlers::Ruby::RestClassHandler < YARD::Handlers::Ruby::Legacy::Bas
     end
   end
 end
+
+class YARD::Handlers::Ruby::Legacy::MethodHandler < YARD::Handlers::Ruby::Legacy::Base
+
+  process do
+    # don't register a normal method handler inside of a resource
+    unless (namespace.is_a? YARD::Handlers::Ruby::RestClassHandler::RESOURCE_OBJECT)
+      super
+    end
+  end
+end

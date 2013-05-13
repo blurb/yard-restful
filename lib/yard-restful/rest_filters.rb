@@ -5,7 +5,7 @@ module YARD
           has_tag?(:restful_api)
         end
         def resource?
-          meths.any?{ |m| m.has_tag?(:url) }
+          children.any?{ |m| m.has_tag?(:url) }
         end
       end
       class MethodObject

@@ -20,3 +20,4 @@ class YARD::Handlers::Ruby::RestMethodHandler < YARD::Handlers::Ruby::Legacy::Ba
     obj = register YARD::CodeObjects::REST::ApiObject.new(nobj, meth)
   end
 end
+
