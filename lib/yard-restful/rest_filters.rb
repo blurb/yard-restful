@@ -2,7 +2,7 @@ module YARD
     module CodeObjects
       class Base
         def restful?
-          has_tag?(:topic)
+          has_tag?(:restful_api)
         end
         def resource?
           meths.any?{ |m| m.has_tag?(:url) }
@@ -18,7 +18,7 @@ end
 
 module RestFilters
 
-  # Select all items from the given list with the tag @topic
+  # Select all items from the given list with the tag @restful_api
   def select_restful(list)
     (list || []).select(&:restful?)
   end
@@ -29,11 +29,11 @@ module RestFilters
   end
 
   def select_objects(list)
-    select_restful(list).reject(&:resource?).sort_by(&:name)
+    select_restful(list).reject(&:resource?).sort_by { |o| o.name.to_s }
   end
 
   def select_resources(list)
-    select_restful(list).select(&:resource?).sort_by(&:name)
+    select_restful(list).select(&:resource?).sort_by { |o| o.name.to_s }
   end
 
 end

@@ -111,12 +111,14 @@ h4 {
 .parameters ul li .type tt {
   font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif; /*taken from original yard style.css*/
 }
+/*
 .odd {
   background: #EAF0FF;
 }
 .even {
   background: #D5E1FF;
 }
+*/
 .examples {
   padding: 32px 12px 12px 12px;
 }
@@ -180,4 +182,41 @@ pre.code.json code:active {
 
 .object_properties_title {
   margin-bottom: 16px;
+}
+
+table{max-width:100%;background-color:transparent;border-collapse:collapse;border-spacing:0}.table{width:100%;margin-bottom:18px}.table th,
+.table
+td{padding:8px;line-height:18px;text-align:left;vertical-align:top;border-top:1px solid #ddd}.table
+th{font-weight:bold}.table thead
+th{vertical-align:bottom}.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child
+td{border-top:0}.table tbody+tbody{border-top:2px solid #ddd}
+
+.parameters table {
+  min-width:300px;
+  border:1px solid red;
+  margin-bottom:20px
+}
+
+.parameters table thead {
+  background:#f4f4f4
+}
+
+.parameters table thead th { 
+  border:1px solid #ccc;
+  padding:5px;
+  color:#202020;
+  font-weight:400
+}
+
+.parameters table td {
+  border:1px solid #ccc;padding:7px
+}
+
+.parameters table td:first-child {
+  font-family:Consolas,Monaco,monospace
 }
