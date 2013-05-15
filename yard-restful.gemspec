@@ -19,17 +19,22 @@ Gem::Specification.new do |s|
   s.files = [
     "Rakefile",
     "lib/yard-restful.rb",
+    "lib/yard-restful/code_objects/api_object.rb",
+    "lib/yard-restful/code_objects/namespace_object.rb",
+    "lib/yard-restful/code_objects/resource_object.rb",
+    "lib/yard-restful/handlers/rest_class_handler.rb",
+    "lib/yard-restful/handlers/rest_method_handler.rb",
     "lib/yard-restful/html_blocks_helper.rb",
     "lib/yard-restful/rest_filters.rb",
     "lib/yard-restful/tags.rb",
-    "templates/default/class/html/fields_list.erb",
-    "templates/default/class/html/header.erb",
-    "templates/default/class/html/object_details.erb",
-    "templates/default/class/html/resource_details.erb",
-    "templates/default/class/html/setup.rb",
+    "templates/default/resource/html/fields_list.erb",
+    "templates/default/resource/html/header.erb",
+    "templates/default/resource/html/object_details.erb",
+    "templates/default/resource/html/resource_details.erb",
+    "templates/default/resource/html/setup.rb",
     "templates/default/docstring/html/setup.rb",
     "templates/default/docstring/html/text.erb",
-    "templates/default/fulldoc/html/css/custom.css",
+    "templates/default/fulldoc/html/css/rest_custom.css",
     "templates/default/fulldoc/html/frames.erb",
     "templates/default/fulldoc/html/full_list_object.erb",
     "templates/default/fulldoc/html/full_list_resource.erb",
@@ -57,4 +62,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<yard>, ["~> 0.8.3"])
   end
 end
-
