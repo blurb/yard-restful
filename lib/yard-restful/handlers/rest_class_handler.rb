@@ -14,17 +14,23 @@ class YARD::Handlers::Ruby::RestClassHandler < YARD::Handlers::Ruby::Legacy::Bas
       superclass_def = $2
       classname = classname.gsub(/\s/, '')
 
-      restful = statement.comments.any? {|comment| comment =~ /@restful/ }
+      comments = statement.comments
+      restful = !comments.nil? && comments.any? {|comment| comment =~ /@restful/ }
       return unless restful
 
-      if classname =~ /Controller$/
-        namespace = RESOURCES_NAMESPACE
-      else
-        namespace = OBJECTS_NAMESPACE
-      end
+      if classname =~ /(#{CONSTANTMATCH})$/
+        # strip out namespaces
+        classname = $1
 
-      klass = register RESOURCE_OBJECT.new(namespace, classname)
-      parse_block(:namespace => klass)
+        if classname =~ /Controller$/
+          namespace = RESOURCES_NAMESPACE
+        else
+          namespace = OBJECTS_NAMESPACE
+        end
+
+        klass = register RESOURCE_OBJECT.new(namespace, classname)
+        parse_block(:namespace => klass)
+      end
     end
   end
 end
