@@ -4,7 +4,6 @@ class YARD::Handlers::Ruby::RestMethodHandler < YARD::Handlers::Ruby::Legacy::Ba
   handles TkDEF
 
   process do
-    puts "hello"
     nobj = namespace
     mscope = scope
 
