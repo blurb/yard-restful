@@ -1,4 +1,5 @@
 def init
   return if object.docstring.blank?
-  sections :text
+  super
+#  sections :text
 end

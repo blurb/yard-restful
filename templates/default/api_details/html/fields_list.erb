@@ -1,0 +1,26 @@
+<% tags_list = object.tags(options.item) %>
+<% if tags_list.size > 0 %>
+  <div class="parameters <%= rotate(:odd_even) %>">
+    <% unless options.title.empty? %>
+      <h4><%= options.title %></h4>
+    <% end %>
+		<table>
+      <thead>
+        <tr>
+          <th align="left"><%= options.type.to_s.capitalize %></th>
+          <th align="left">Type</th>
+          <th aligh="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+  		<% tags_list.each do |tag| %>
+				<tr>
+          <td align="left" class="name"><%= tag.name %></td>
+					<td align="left" class="type"><%= format_types(tag.types, false) %></td>
+					<td align="left" class="text"><%= htmlify(tag.text) %></td>
+				</tr>
+  		<% end %>
+	   </tbody>
+   </table>
+	</div>
+<% end %>

@@ -3,6 +3,7 @@ YARD::Templates::Engine.register_template_path File.dirname(__FILE__) + '/../tem
 require 'yard-restful/tags'
 require 'yard-restful/rest_filters'
 require 'yard-restful/html_blocks_helper'
+require 'yard-restful/markup.rb'
 require 'yard-restful/code_objects/namespace_object.rb'
 require 'yard-restful/code_objects/api_object.rb'
 require 'yard-restful/code_objects/resource_object.rb'

@@ -36,5 +36,20 @@ module RestFilters
     select_restful(list).select(&:resource?).sort_by { |o| o.name.to_s }
   end
 
+  # patch render for yard server - it gets into an infinite loop
+  # unless we clear the type field
+  def linkify(*args)
+    if args.first.is_a?(String)
+      case args.first
+      when /^render:(\S+)/
+        old_type = options.delete(:type)
+        output = super
+        options.type = old_type
+        return output
+      end
+    end
+    super
+  end
+
 end
 

@@ -4,13 +4,13 @@ body {
   padding: 0 !important;
   margin: 0 !important;
   width: 100%;
+  background-color: #e5e5e5;
 }
 #toc {
-  height: 100%;
   right: 0;
-  position: fixed;
-  top: 0;
+/*  position: fixed; */
   width: 230px;
+  padding: 30px 20px 10px 20px; 
 }
 #header {
   position: fixed;
@@ -24,20 +24,25 @@ body {
   z-index: 1001;
 }
 #content {
-  margin-right: 285px;
+  width:900px;
+  margin: 40px auto;
   position: relative;
   padding: 20px;
   z-index: 1;
+  background-color: #fff;
+  border-radius: 10px;
 }
+
+/*
 #toc .title {display: none;}
 #toc a:link, #content a:visited { text-decoration: none; color: #05a; }
 #toc a:hover { background: #ffffa5; }
-pre code {
   display: block;
-  background: #EAF0FF;
+  background: #f5f5ff;
   padding: 12px;
   line-height: 1.9em;
 }
+*/
 a.back {
   font-size: 1.2em;
   padding: 4px;

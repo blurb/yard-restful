@@ -1,0 +1,77 @@
+  <h3><%= object.name %></h3>
+  <p class="method_desc"><%= object.docstring %></p>
+
+  <% if object.tags(:url).size > 0 %>
+  <div class="resource_url <%=rotate(:odd_even)%>">
+    <h4>URL</h4>
+    <span class="action"><%= object.tag(:action).text %></span>
+    <span class="url"><%= object.tag(:url).text %></span>
+  </div>
+  <% end %>
+
+  <%= yieldall(:object => object, :item => :required, :title => 'Required Parameters', :type => 'parameter') %>
+  <%= yieldall(:object => object, :item => :optional, :title => 'Optional Parameters', :type => 'parameter') %>
+  <% if object.tags(:response).size > 0 %>
+  <div class="parameters <%=rotate(:odd_even)%>">
+    <h4>Response Object</h4>
+    <ul>
+      <li>
+        <span class="type"><%= format_types(object.tag(:response).types, false) %></span>
+        <span class="text"><%= htmlify(object.tag(:response).text) %></span>
+      </li>
+    </ul>
+  </div>
+  <% else %>
+  <%= yieldall(:object => object, :item => :response_field, :title => 'Response Fields') %>
+  <% end %>
+
+  <% if object.tags(:example_request).size > 0 %>
+  <div class="examples">
+    <h4>Examples</h4>
+    <% object.tags(:example_request).each_with_index do |example_request, i| %>
+    <div class="example">
+      <% example_request_description = object.tags(:example_request_description)[i] %>
+      <% example_response = object.tags(:example_response)[i] %>
+      <% example_response_description = object.tags(:example_response_description)[i] %>
+      <span class="description">
+        <% if example_request_description %>
+        <% if example_request_description.text =~ /\n/im %>
+        <%= htmlify(example_request_description.text) %>
+        <% else %>
+        <%= example_request_description.text %>
+        <% end %>
+        <% end %>
+      </span>
+      <span class="hash request">
+        <strong class="type">Request</strong>
+        <% if example_request %>
+        <% if example_request.text =~ /\n/im %>
+        <%= htmlify(example_request.text) %>
+        <% else %>
+        <%= example_request.text %>
+        <% end %>
+        <% end %>
+      </span>
+      <span class="hash response">
+        <strong class="type">Response</strong>
+        <% if example_response %>
+        <% if example_response.text =~ /\n/im %>
+        <%= htmlify(example_response.text) %>
+        <% else %>
+        <%= example_response.text %>
+        <% end %>
+        <% end %>
+      </span>
+      <span class="description">
+        <% if example_response_description %>
+        <% if example_response_description.text =~ /\n/im %>
+        <%= htmlify(example_response_description.text) %>
+        <% else %>
+        <%= example_response_description.text %>
+        <% end %>
+        <% end %>
+      </span>
+    </div>
+    <% end %>
+  </div>
+  <% end %>

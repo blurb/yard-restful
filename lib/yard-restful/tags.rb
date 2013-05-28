@@ -7,7 +7,9 @@ tags = [
 
   #["Object Used in Resource",       :resource_object],
   ["Resource Object Property",      :property, :with_types_and_name],
-  ["Resource Object Example",       :example],
+
+  # don't override default example tag
+  # ["Resource Object Example",       :example],
 
   ["Overridden method name",        :method_name],
 
