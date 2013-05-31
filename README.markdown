@@ -6,6 +6,7 @@ Previous authors: [vWorkApp](http://www.vworkapp.com), [rknLA](http://github.com
 ## Main features
 Plugin provides custom tags to describe resources (controllers) and resulting objects (models).
 
+
 If you use an object name in description of resource parameters, it will
 be linked to the object description.
 
