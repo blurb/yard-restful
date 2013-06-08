@@ -4,7 +4,8 @@
   <% if object.tags(:url).size > 0 %>
   <div class="resource_url <%=rotate(:odd_even)%>">
     <h4>URL</h4>
-    <span class="action"><%= object.tag(:action).text %></span>
+    <% action = object.tag(:action) ? object.tag(:action).text : 'GET' %>
+    <span class="action"><%= action %></span>
     <span class="url"><%= object.tag(:url).text %></span>
   </div>
   <% end %>
