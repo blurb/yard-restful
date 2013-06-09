@@ -1,0 +1,1 @@
+include T('default/resource/html')

@@ -1,0 +1,1 @@
+include T('default/api_details/html')
