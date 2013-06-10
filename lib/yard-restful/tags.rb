@@ -8,8 +8,9 @@ tags = [
   #["Object Used in Resource",       :resource_object],
   ["Resource Object Property",      :property, :with_types_and_name],
 
-  # don't override default example tag
-  # ["Resource Object Example",       :example],
+  # document an alternate variation of an endpoint
+  # all subsequent tags are grouped into a separate API method
+  ["Alternate",       :alternate],
 
   ["Overridden method name",        :method_name],
 
