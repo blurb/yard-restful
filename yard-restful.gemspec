@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Konstantin Rafalsky"]
-  s.date = "2013-06-03"
+  s.date = "2013-10-07"
   s.description = "A customized plugin for Yardoc that produces API documentation for Restful web services"
   s.email = ""
   s.extra_rdoc_files = [
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     "Rakefile",
+    "bin/plantuml.jar",
     "lib/yard-restful.rb",
     "lib/yard-restful/code_objects/api_object.rb",
     "lib/yard-restful/code_objects/namespace_object.rb",
@@ -40,19 +41,20 @@ Gem::Specification.new do |s|
     "templates/default/fulldoc/html/frames.erb",
     "templates/default/fulldoc/html/full_list_object.erb",
     "templates/default/fulldoc/html/full_list_resource.erb",
-    "templates/default/fulldoc/html/js/rest_plugin.js",
     "templates/default/fulldoc/html/setup.rb",
     "templates/default/fulldoc/iodocs/apiconfig.erb",
     "templates/default/fulldoc/iodocs/setup.rb",
     "templates/default/layout/html/footer.erb",
-    "templates/default/layout/html/index.erb",
     "templates/default/layout/html/layout.erb",
     "templates/default/layout/html/setup.rb",
     "templates/default/resource/html/fields_list.erb",
     "templates/default/resource/html/header.erb",
     "templates/default/resource/html/object_details.erb",
     "templates/default/resource/html/resource_details.erb",
-    "templates/default/resource/html/setup.rb"
+    "templates/default/resource/html/setup.rb",
+    "templates/guide/api/html/setup.rb",
+    "templates/guide/api_details/html/setup.rb",
+    "templates/guide/resource/html/setup.rb"
   ]
   s.homepage = "https://github.com/kraft001/yard-restful"
   s.require_paths = ["lib"]

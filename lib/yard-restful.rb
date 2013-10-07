@@ -1,4 +1,5 @@
 YARD::Templates::Engine.register_template_path File.dirname(__FILE__) + '/../templates'
+require 'redcarpet'
 
 require 'yard-restful/tags'
 require 'yard-restful/rest_filters'

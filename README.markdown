@@ -58,15 +58,15 @@ The following tags are provided:
 
 - **@restful_api** version
 
-  Specifies the resource (controller) or object (model). This tag is compulsory, only **classes** and **methods** that include this in their comments are included in the API documentation.
+  Specifies the resource (controller) or object (model). This tag is compulsory, only **classes** that include this in their comments are included in the API documentation.
 
 - **@url** url
 
-  Specifies the URL which someone should use to access that resource.
+  Specifies the URL which someone should use to access that resource. This tag is compulsory, only **methods** that include this in their comments are included in the API documentation
 
 - **@action** action
 
-  Specifies the http action (GET, POST, PUT etc.).
+  Specifies the http action (GET, POST, PUT etc.).  Defaults to GET
 
 - **@required** [type] name description
 
