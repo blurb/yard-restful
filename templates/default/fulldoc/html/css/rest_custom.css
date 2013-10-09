@@ -69,7 +69,7 @@ h3 {
   margin-bottom: -6px;
 }
 h4 {
-  margin: 0;
+  margin: 0 0 4px 0;
 }
 #resources {
   padding: 14px 50px 32px;
@@ -225,3 +225,7 @@ td{border-top:0}.table tbody+tbody{border-top:2px solid #ddd}
 .parameters table td:first-child {
   font-family:Consolas,Monaco,monospace
 }
+
+.parameters table, .docstring table { border-collapse: collapse; }
+.parameters table tr:nth-child(odd) { background: #eee; }
+.parameters table th, .parameters table tr:nth-child(even) { background: #fff; }

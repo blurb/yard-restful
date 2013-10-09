@@ -6,26 +6,28 @@ class YARD::Handlers::Ruby::RestMethodHandler < YARD::Handlers::Ruby::Legacy::Ba
   attr_accessor :scoped_comments
 
   process do
-    nobj = namespace
-    mscope = scope
+    if (namespace.is_a? YARD::Handlers::Ruby::RestClassHandler::RESOURCE_OBJECT)
+      nobj = namespace
+      mscope = scope
 
-    comments = statement.comments
-    restful = !comments.nil? && comments.any? {|comment| comment =~ /@url/ }
-    next unless restful
+      comments = statement.comments
+      restful = !comments.nil? && comments.any? {|comment| comment =~ /@url/ }
+      next unless restful
 
-    if statement.tokens.to_s =~ /^def\s+(#{METHODMATCH})(?:(?:\s+|\s*\()(.*)(?:\)\s*$)?)?/m
-      meth, args = $1, $2
-      meth.gsub!(/\s+/,'')
-    else
-      raise YARD::Parser::UndocumentableError, "method: invalid name"
-    end
+      if statement.tokens.to_s =~ /^def\s+(#{METHODMATCH})(?:(?:\s+|\s*\()(.*)(?:\)\s*$)?)?/m
+        meth, args = $1, $2
+        meth.gsub!(/\s+/,'')
+      else
+        raise YARD::Parser::UndocumentableError, "method: invalid name"
+      end
 
-    alternates = parse_alternates(meth,statement.comments)
+      alternates = parse_alternates(meth,statement.comments)
 
-    alternates.keys.each do |alternate|
-      self.scoped_comments = alternates[alternate]
-      log.debug "registering api: #{alternate}"
-      obj = register YARD::CodeObjects::REST::ApiObject.new(nobj, alternate)
+      alternates.keys.each do |alternate|
+        self.scoped_comments = alternates[alternate]
+        log.debug "registering api: #{alternate} in #{nobj}"
+        obj = register YARD::CodeObjects::REST::ApiObject.new(nobj, alternate)
+      end
     end
   end
 

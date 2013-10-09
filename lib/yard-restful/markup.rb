@@ -4,7 +4,11 @@ require 'open3'
 module YARD::Templates::Helpers::HtmlSyntaxHighlightHelper
   # transform a uml code block into a link to the rendered image
   def html_syntax_highlight_uml(code)
-    folder = "#{options.serializer.basepath}/diagrams/"
+    root = options.adapter ? options.adapter.document_root : options.serializer.basepath
+    if root && root.size > 0 && !root.end_with?('/')
+      root = root + "/"
+    end
+    folder = "#{root}diagrams/"
     FileUtils.mkdir_p folder
     filename = Digest::MD5.hexdigest(code) + ".png"
     filepath = folder + filename
@@ -15,9 +19,14 @@ module YARD::Templates::Helpers::HtmlSyntaxHighlightHelper
        pipe.write code
       end
     end
+    if options.adapter
+      url = url_for_file(filepath)
+    else
+      url = "diagrams/#{filename}"
+    end
     
     <<-EOM
-      <img src="diagrams/#{filename}">
+      <img src="#{url}">
     EOM
   end
 end
@@ -51,7 +60,7 @@ module YARD
   module Templates::Helpers
     # Helper methods for loading and managing markup types.
     module MarkupHelper
-      # remove the normal redcarpet provide and add ours
+      # remove the normal redcarpet provider and add ours
       MARKUP_PROVIDERS[:markdown].unshift( { :lib => :redcarpet, 
         :const => 'Blurb::CustomMarkupProvider'} )
     end
