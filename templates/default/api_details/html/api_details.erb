@@ -22,9 +22,8 @@
       </li>
     </ul>
   </div>
-  <% else %>
-  <%= yieldall(:object => object, :item => :response_field, :title => 'Response Fields') %>
   <% end %>
+  <%= yieldall(:object => object, :item => :response_field, :title => 'Response Fields') %>
 
   <% if object.tags(:example_request).size > 0 %>
   <div class="examples">
