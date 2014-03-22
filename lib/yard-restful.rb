@@ -1,6 +1,8 @@
 YARD::Templates::Engine.register_template_path File.dirname(__FILE__) + '/../templates'
 require 'redcarpet'
 
+require 'yard-restful/handlers/patch_yard.rb'
+
 require 'yard-restful/tags'
 require 'yard-restful/rest_filters'
 require 'yard-restful/html_blocks_helper'
